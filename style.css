@@ -103,6 +103,9 @@ nav li a.active {
   vertical-align: top;
   margin-left: 5px;
 }
+.temp {
+  font-size: 50px !important;
+}
 
 .weather {
   background-color: #DAE3FD;
