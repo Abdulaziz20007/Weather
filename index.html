@@ -3,9 +3,9 @@
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <title>CodePen - Animated Weather Cards</title>
+  <title>Fergana weather</title>
   <link rel="stylesheet" href="./style.css">
-
+  <link rel="shortcut icon" id="fav" type="image/x-icon">
 </head>
 <body>
 <!-- partial:index.partial.html -->
@@ -26,7 +26,7 @@
 	c37.2,6.4,72.7,19.2,105.4,38L22-40.9z"/>
 	</svg>
 	<nav>
-		<ul>
+		<ul style="display: none;">
 			<li><a id="button-snow" class="active"><i class="wi wi-snow"></i></a></li>
 			<li><a id="button-wind"><i class="wi wi-strong-wind"></i></a></li>
 			<li><a id="button-rain"><i class="wi wi-rain"></i></a></li>
@@ -48,9 +48,9 @@
 			<g id="cloud1" class="cloud"></g>
 		</svg>
 		<div class="details">
-			<div class="temp">20<span>c</span></div>
+			<div id="temp" class="temp"></div>
 			<div class="right">
-				<div id="date">Monday 22 August</div>
+				<div id="date"></div>
 				<div id="summary"></div>
 			</div>
 			
