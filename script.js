@@ -636,7 +636,7 @@ async function myfunc(){
 	const response = await fetch('https://api.weatherapi.com/v1/current.json?key=3970b1ff417b4d2eaac152135222411&q=Fergana&aqi=no'); 
 	var data = await response.json();
 	function retrn() {
-		if(data.current.cloud > 50) {
+		if(data.current.cloud > 35) {
 			document.getElementById('button-rain').click();
 		}
 		else {
