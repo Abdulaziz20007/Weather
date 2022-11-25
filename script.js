@@ -615,7 +615,7 @@ function changeWeather(weather)
 
 
 // Created by Abdulaziz
-fetch('http://api.weatherapi.com/v1/current.json?key=3970b1ff417b4d2eaac152135222411&q=Fergana&aqi=no')
+fetch('https://api.weatherapi.com/v1/current.json?key=3970b1ff417b4d2eaac152135222411&q=Fergana&aqi=no')
 .then(response => response.json())
 .then(data => (document.getElementById('temp').innerHTML = data.current.temp_c+'<span>c</span>',
 document.getElementById('date').innerHTML = data.location.localtime,
