@@ -620,6 +620,6 @@ fetch('http://api.weatherapi.com/v1/current.json?key=3970b1ff417b4d2eaac15213522
 .then(data => (document.getElementById('temp').innerHTML = data.current.temp_c+'<span>c</span>',
 document.getElementById('date').innerHTML = data.location.localtime,
 document.getElementById('fav').href = data.current.condition.icon,
-console.log(data)))
+console.log(data)));
 
 document.getElementById("button-rain").click();
