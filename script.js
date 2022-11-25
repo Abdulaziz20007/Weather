@@ -1,3 +1,8 @@
+// Created  by Abdulaziz
+	
+
+// Created  by Abdulaziz
+
 // 📝 Fetch all DOM nodes in jQuery and Snap SVG
 
 var container = $('.container');
@@ -52,7 +57,7 @@ var clouds = [
 var weather = [
 	{ type: 'snow', name: 'Snow'}, 
 	{ type: 'wind', name: 'Windy'}, 
-	{ type: 'rain', name: 'Rain'}, 
+	{ type: 'rain', name: 'Cloudy'}, 
 	{ type: 'thunder', name: 'Storms'},
 	{ type: 'sun', name: 'Sunny'}
 ];
@@ -197,7 +202,12 @@ function makeRain()
 	// to dictate which svg group it'll be added to and 
 	// whether it'll generate a splash
 	
-	var lineWidth = Math.random() * 3;
+	if(currentWeather.type == 'rain') {
+		var lineWidth = 0;
+	}
+	else {
+		var lineWidth = Math.random() * 3;
+	}
 	
 	// ⛈ line length is made longer for stormy weather
 	
@@ -602,3 +612,14 @@ function changeWeather(weather)
 	
 	startLightningTimer();
 }
+
+
+// Created by Abdulaziz
+fetch('http://api.weatherapi.com/v1/current.json?key=3970b1ff417b4d2eaac152135222411&q=Fergana&aqi=no')
+.then(response => response.json())
+.then(data => (document.getElementById('temp').innerHTML = data.current.temp_c+'<span>c</span>',
+document.getElementById('date').innerHTML = data.location.localtime,
+document.getElementById('fav').href = data.current.condition.icon,
+console.log(data)))
+
+document.getElementById("button-rain").click();
