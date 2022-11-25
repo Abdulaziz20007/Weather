@@ -650,7 +650,7 @@ async function myfunc(){
 	else {
 		retrn()
 	}
-	if(data.current.wind_mph > 10) {
+	if(data.current.gust_mph > 10) {
 		document.getElementById('button-wind').click()
 	}
 	else {
