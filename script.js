@@ -1,8 +1,3 @@
-// Created  by Abdulaziz
-	
-
-// Created  by Abdulaziz
-
 // 📝 Fetch all DOM nodes in jQuery and Snap SVG
 
 var container = $('.container');
@@ -568,7 +563,7 @@ function changeWeather(weather)
 		default:
 			TweenMax.to(settings, 1, {rainCount: 0, ease: Power2.easeOut});
 			break;
-	}	
+	}		
 	
 	// leafCount
 	
@@ -615,52 +610,43 @@ function changeWeather(weather)
 
 
 // Created by Abdulaziz
-
-
-fetch('https://api.weatherapi.com/v1/current.json?key=3970b1ff417b4d2eaac152135222411&q=Fergana&aqi=no')
-.then(response => response.json())
-.then(data => (document.getElementById('temp').innerHTML = data.current.temp_c+'<span>c</span>',
-document.getElementById('date').innerHTML = data.location.localtime,
-document.getElementById('fav').href = data.current.condition.icon,
-console.log(data)));
-
-
-
-
-
-
-
-
-
-async function myfunc(){ 
-	const response = await fetch('https://api.weatherapi.com/v1/current.json?key=3970b1ff417b4d2eaac152135222411&q=Fergana&aqi=no'); 
-	var data = await response.json();
-	function retrn() {
-		if(data.current.cloud > 35) {
+document.getElementById('button-sun').click()
+if (navigator.geolocation) {
+	navigator.geolocation.getCurrentPosition(getWeather);
+  } else {
+	console.log("Geolocation is not supported by this browser.");
+  }
+  
+  function getWeather(position) {
+	const apiKey = '4a71e1c767972dc6b2268c87d9e176b6';
+	const latitude = position.coords.latitude;
+	const longitude = position.coords.longitude;
+	const apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}`;
+  
+	fetch(apiUrl)
+	  .then(response => response.json())
+	  .then(data => {
+		console.log('Weather data:', data);
+		if(data.clouds > 35) {
 			document.getElementById('button-rain').click();
 		}
-		else {
-			document.getElementById('button-sun').click();
+		else if (data.weather[0].description == 'smoke') {
+			document.getElementById('button-sun').click()
 		}
-	}
-	retrn()
-	if(data.current.precip_in > 55) {
-		document.getElementById('button-thunder').click()
-	}
-	else {
-		retrn()
-	}
-	if(data.current.gust_mph > 10) {
-		document.getElementById('button-wind').click()
-	}
-	else {
-		retrn()
-	}
-  }  
-myfunc()
-
-
-
-
-
-document.getElementById('button-rain').click();
+		else if (data.weather[0].description == 'snow') {
+			document.getElementById('button-snow').click()
+		}
+		else if (data.weather[0].description == 'rain') {
+			document.getElementById('button-thunder').click()
+		}
+		else if(data.wind.speed < 10) {
+			document.getElementById('button-wind').click()
+		}
+		else {
+			document.getElementById('button-sun').click()
+		}
+		// You can extract specific weather information from the 'data' object
+	  })
+	  .catch(error => console.log('Error fetching weather data:', error));
+  }
+  
